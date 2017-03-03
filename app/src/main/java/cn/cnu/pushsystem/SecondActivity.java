@@ -26,4 +26,5 @@ public class SecondActivity extends AppCompatActivity {
         System.out.println(str2 + "---------------");
         textView.setText(content + "---" + message);
     }
+
 }
