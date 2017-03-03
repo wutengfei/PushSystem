@@ -13,7 +13,6 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         textView = (TextView) findViewById(R.id.textView);
-
        //从DemoMessageReceiver传来的Intent
         Intent intent = getIntent();
         String content = intent.getStringExtra("content");
