@@ -43,13 +43,17 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         String message = intent.getStringExtra("message");
         textView.setText(content);
 
-        content=1+"apple";
+        content = "1,apple,banana,good,nice";
         // 取字符串的前i个字符
         String  str=content.substring(0,1);
         //去掉字符串的前i个字符：
         String str2=content.substring(1);
         System.out.println(str+"---------------");
         System.out.println(str2+"---------------");
+
+        String contents[]= content.split(",");
+        for(int i = 0; i<contents.length; i++)
+            System.out.println("--------------------------------"+contents[i]);
     }
 
 

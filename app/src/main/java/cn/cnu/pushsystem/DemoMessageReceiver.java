@@ -90,6 +90,7 @@ public class DemoMessageReceiver extends PushMessageReceiver {
         Intent intent = new Intent(context, ShowActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("content", log);
+        intent.putExtra("topic",mTopic);
         intent.putExtra("message", message.toString());
 
         context.startActivity(intent);
