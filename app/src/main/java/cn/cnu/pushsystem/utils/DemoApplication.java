@@ -1,4 +1,4 @@
-package cn.cnu.pushsystem;
+package cn.cnu.pushsystem.utils;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -10,6 +10,7 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+import cn.cnu.pushsystem.MainActivity;
 import com.xiaomi.channel.commonutils.logger.LoggerInterface;
 import com.xiaomi.mipush.sdk.Logger;
 import com.xiaomi.mipush.sdk.MiPushClient;
@@ -106,7 +107,7 @@ public class DemoApplication extends Application {
                 sMainActivity.refreshLogInfo();
             }
             if (!TextUtils.isEmpty(s)) {
-                Toast.makeText(context, s, Toast.LENGTH_LONG).show();
+               // Toast.makeText(context, s, Toast.LENGTH_LONG).show();
             }
         }
     }

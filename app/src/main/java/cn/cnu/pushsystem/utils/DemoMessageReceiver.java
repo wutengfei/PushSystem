@@ -1,4 +1,4 @@
-package cn.cnu.pushsystem;
+package cn.cnu.pushsystem.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,8 +7,10 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 
-import cn.cnu.pushsystem.androidUI.ShowActivity;
-
+import cn.cnu.pushsystem.MainActivity;
+import cn.cnu.pushsystem.R;
+import cn.cnu.pushsystem.SecondActivity;
+import cn.cnu.pushsystem.utils.DemoApplication;
 import com.xiaomi.mipush.sdk.*;
 
 import java.text.SimpleDateFormat;
@@ -21,7 +23,7 @@ import java.util.List;
  * <pre>
  * {@code
  *  <receiver
- *      android:name="cn.cnu.pushsystem.DemoMessageReceiver"
+ *      android:name="cn.cnu.pushsystem.utils.DemoMessageReceiver"
  *      android:exported="true">
  *      <intent-filter>
  *          <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
@@ -87,7 +89,7 @@ public class DemoMessageReceiver extends PushMessageReceiver {
         }
         DemoApplication.getHandler().sendMessage(msg);
         //通知到达后点击通知消息时的处理
-        Intent intent = new Intent(context, ShowActivity.class);
+        Intent intent = new Intent(context, SecondActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("content", log);
         intent.putExtra("topic",mTopic);
