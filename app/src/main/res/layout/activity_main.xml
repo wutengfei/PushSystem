@@ -57,5 +57,14 @@
             android:text="下载"
             />
 
+    <Button
+            android:text="Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:onClick="changeTopic"
+            android:id="@+id/button3"/>
+
 
 </RelativeLayout>

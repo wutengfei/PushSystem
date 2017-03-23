@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                         try {
-                           // ZipUtils.upZipFile(file1, unZipDir);
+                            // ZipUtils.upZipFile(file1, unZipDir);
                             ZIP.UnZipFolder(file1.getPath(), unZipDir);
                             Toast.makeText(MainActivity.this, "解压缩成功", Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
@@ -207,8 +207,8 @@ public class MainActivity extends AppCompatActivity {
         String Path = dir + "/resource";//xml文件所在目录
         File file2 = new File(Path);
         File[] tempList = file2.listFiles();
-        System.out.println(tempList[tempList.length-1].getName());
-        XmlFileAnalysis xmlFileAnalysis = new XmlFileAnalysis(Path, tempList[tempList.length-1].getName());
+        System.out.println(tempList[tempList.length - 1].getName());
+        XmlFileAnalysis xmlFileAnalysis = new XmlFileAnalysis(Path, tempList[tempList.length - 1].getName());
         List<Tb_word> words = xmlFileAnalysis.readXML();
         XmlDAO xmlDAO = new XmlDAO(MainActivity.this);
         if (xmlDAO.insert(words)) {
@@ -242,5 +242,8 @@ public class MainActivity extends AppCompatActivity {
         // mLogView.setText(AllLog);
     }
 
+    public void changeTopic(View view) {
+        MiPushClient.subscribe(MainActivity.this, "xiaomi5s", null);
+    }
 
 }
