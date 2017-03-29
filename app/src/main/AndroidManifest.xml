@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -29,14 +28,11 @@
         <activity
                 android:name=".MainActivity"
                 android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
-        <activity android:name=".androidUI.ShowActivity"
-                  android:screenOrientation="landscape">
+        <activity
+                android:name=".androidUI.ShowActivity"
+                android:screenOrientation="landscape">
         </activity>
         <activity
                 android:name=".androidUI.ParagraphActivity"
@@ -103,7 +99,21 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".SecondActivity">
+        <activity android:name=".SecondActivity"
+                  android:screenOrientation="landscape">
+        </activity>
+        <activity android:name=".androidUI.RegisterActivity"
+                  android:screenOrientation="landscape"
+                  android:launchMode="singleTask">
+        </activity>
+        <activity android:name=".androidUI.LoginActivity"
+                  android:screenOrientation="landscape"
+                android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
