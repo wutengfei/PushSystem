@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import cn.cnu.pushsystem.MainActivity;
 import cn.cnu.pushsystem.R;
+import cn.cnu.pushsystem.utils.HttpUtils;
 import cn.cnu.pushsystem.utils.TextStreamUtils;
 
 import java.io.InputStream;
@@ -21,11 +22,43 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final int LOGIN_SUCCESS_FLAG = 1;
+    private static final int REGISTER_SUCCESS_FLAG = 2;
+    private static final int LOGIN_FAIL_FLAG = 3;
+    private static final int REGISTER_FAIL_FLAG = 4;
+    private static final int USERNAME_EXIST = 5;
+    private static final int SERVER_ERROR = 6;
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
+        mHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                android.util.Log.i("system.out", "msg.what=" + msg.what);
+                switch (msg.what) {
+                    case LOGIN_SUCCESS_FLAG:
+                        Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        break;
+                    case LOGIN_FAIL_FLAG:
+                        Toast.makeText(LoginActivity.this, "登陆失败，用户名或密码错误", Toast.LENGTH_SHORT).show();
+                    case REGISTER_SUCCESS_FLAG:
+                    case REGISTER_FAIL_FLAG:
+                    case USERNAME_EXIST:
+                        break;
+                    case SERVER_ERROR:
+                        Toast.makeText(LoginActivity.this, "服务器异常", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        };
     }
 
     /**
@@ -41,8 +74,8 @@ public class LoginActivity extends AppCompatActivity {
         EditText et_name = (EditText) findViewById(R.id.et_username);
         EditText et_pass = (EditText) findViewById(R.id.et_password);
 
-        final String name = et_name.getText().toString();
-        final String pass = et_pass.getText().toString();
+        final String userName = et_name.getText().toString();
+        final String passWord = et_pass.getText().toString();
 
         //判断是否有网络连接
         NetworkInfo netIntfo = null;
@@ -51,7 +84,48 @@ public class LoginActivity extends AppCompatActivity {
         if (netIntfo == null) {
             Toast.makeText(this, "请检查网络", Toast.LENGTH_SHORT).show();
         } else {
-            // 开启线程来发起网络请求
+            new Thread() {
+                public void run() {
+                    Message msg = Message.obtain();
+                    String result = HttpUtils.sendGetRequestLogin(userName, passWord);
+                    if (result != null) {
+                        if (result.equals("login_success")) {
+                            msg.what = LOGIN_SUCCESS_FLAG;
+                            mHandler.sendMessage(msg);
+                        } else if (result.equals("login_fail")) {
+                            msg.what = LOGIN_FAIL_FLAG;
+                            mHandler.sendMessage(msg);
+                        } else if (result.equals("服务器异常")) {
+                            msg.what = SERVER_ERROR;
+                            mHandler.sendMessage(msg);
+                        }
+                    }
+                }
+
+                ;
+            }.start();
+        }
+    }
+
+    public void register(View view) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotoMain(View view) {
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+    }
+
+
+
+
+
+
+
+
+
+
+         /*   // 开启线程来发起网络请求
             Thread t = new Thread() {
 
                 public void run() {
@@ -95,9 +169,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             };
-            t.start();
-        }
-    }
+            t.start();*/
+
+/*
 
     private Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
@@ -112,5 +186,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     };
+*/
 
 }

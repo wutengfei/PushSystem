@@ -16,6 +16,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        getSupportActionBar().hide();
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true); //允许使用javascript
         webView.setWebViewClient(new WebViewClient() {//使网页中的链接不以浏览器的方式打开

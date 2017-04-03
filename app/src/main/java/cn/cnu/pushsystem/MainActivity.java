@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         fileName = "resource.zip";
         textView = (TextView) findViewById(R.id.textView);
         String url = "http://172.19.203.88:8080/" + fileName;

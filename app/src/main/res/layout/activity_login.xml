@@ -40,10 +40,25 @@
             android:layout_height="wrap_content"
             android:background="@drawable/robot"
             android:id="@+id/imageView"
+            android:onClick="gotoMain"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="43dp"/>
 
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="username"
+            android:background="@drawable/input_frame"
+            android:ems="10"
+            android:id="@+id/et_username"
+            android:layout_above="@+id/et_password"
+            android:layout_alignLeft="@+id/et_password"
+            android:layout_alignStart="@+id/et_password"
+            android:layout_marginBottom="20dp"
+            android:layout_alignRight="@+id/imageButton2"
+            android:layout_alignEnd="@+id/imageButton2"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,20 +75,6 @@
             android:layout_alignEnd="@+id/imageButton2"
             android:layout_marginBottom="20dp"/>
 
-    <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="username"
-            android:background="@drawable/input_frame"
-            android:ems="10"
-            android:id="@+id/et_username"
-            android:layout_above="@+id/et_password"
-            android:layout_alignLeft="@+id/et_password"
-            android:layout_alignStart="@+id/et_password"
-            android:layout_marginBottom="20dp"
-            android:layout_alignRight="@+id/imageButton2"
-            android:layout_alignEnd="@+id/imageButton2"/>
 
     <ImageButton
             android:layout_width="wrap_content"

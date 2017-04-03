@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import cn.cnu.pushsystem.R;
 
-
 public class WordActivity extends AppCompatActivity {
 
     @Override
