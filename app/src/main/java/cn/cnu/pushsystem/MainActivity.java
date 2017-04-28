@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import android.widget.Toast;
+import cn.cnu.pushsystem.androidUI.FirstActivity;
 import cn.cnu.pushsystem.androidUI.ShowActivity;
 import cn.cnu.pushsystem.dao.XmlDAO;
 import cn.cnu.pushsystem.entity.Tb_word;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        fileName = "resource.zip";
+        fileName = "resource1.zip";
         textView = (TextView) findViewById(R.id.textView);
         String url = "http://172.19.203.88:8080/" + fileName;
         textView.setText(url);
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     //跳转至下一页
     public void button(View view) {
-        Intent intent = new Intent(this, ShowActivity.class);
+        Intent intent = new Intent(this, FirstActivity.class);
         startActivity(intent);
     }
 

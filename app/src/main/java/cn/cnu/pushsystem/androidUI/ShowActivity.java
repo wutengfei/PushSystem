@@ -52,12 +52,13 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         helper = new DBOpenHelper(this);
         db = helper.getWritableDatabase();
         String name = "lake";
-        Cursor cursor = db.query("word", new String[]{"name", "picturePath", "pronunciationPath"},
+        Cursor cursor = db.query("word", new String[]{"name", "picturePath", "pronunciationPath","vedioPath1"},
                 "name like ? ", new String[]{name}, null, null, null, null);
         Tb_word word = new Tb_word();
         if (cursor.moveToFirst()) {
             word.setPicturePath(cursor.getString(cursor.getColumnIndex("picturePath")));
             word.setPronunctionPath(cursor.getString(cursor.getColumnIndex("pronunciationPath")));
+            word.setVedioPath1(cursor.getString(cursor.getColumnIndex("vedioPath1")));
         }
         //图片路径
         String picturePath = Environment.getExternalStorageDirectory() + File.separator + "Android/data/" +
@@ -70,6 +71,11 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         String pronunciationPath = Environment.getExternalStorageDirectory() + File.separator + "Android/data/" +
                 getApplication().getPackageName() + File.separator + "resource/" + word.getPronunctionPath();
         System.out.println("pronunciationPath:"+pronunciationPath);
+
+        //视频路径
+        String videoPath = Environment.getExternalStorageDirectory() + File.separator + "Android/data/" +
+                getApplication().getPackageName() + File.separator + "resource/" + word.getVedioPath1();
+        System.out.println("getVedioPath1:"+videoPath);
 
         //把压缩包中xml文件里含有的所有单词提取出来，放入数组
         Cursor cursor2 = db.query("word", new String[]{"name"},

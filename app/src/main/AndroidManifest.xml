@@ -28,7 +28,6 @@
         <activity
                 android:name=".MainActivity"
                 android:screenOrientation="landscape">
-
         </activity>
         <activity
                 android:name=".androidUI.ShowActivity"
@@ -99,21 +98,26 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".SecondActivity"
-                  android:screenOrientation="landscape">
+        <activity
+                android:name=".SecondActivity"
+                android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".androidUI.RegisterActivity"
-                  android:screenOrientation="landscape"
-                  android:launchMode="singleTask">
+        <activity
+                android:name=".androidUI.RegisterActivity"
+                android:launchMode="singleTask"
+                android:screenOrientation="landscape">
         </activity>
-        <activity android:name=".androidUI.LoginActivity"
-                  android:screenOrientation="landscape"
-                android:launchMode="singleTask">
+        <activity
+                android:name=".androidUI.LoginActivity"
+                android:launchMode="singleTask"
+                android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".androidUI.FirstActivity">
         </activity>
     </application>
 

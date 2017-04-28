@@ -206,18 +206,20 @@ public class XmlFileAnalysis {
                     continue;
                 }
                if ("video".equals(node.getAttribute("name"))){
-                   switch (node.getAttribute("difficulty")){
-                       case "1":
-                           word.setVedioPath1(node.getAttribute("path"));
-                           break;
-                       case "2":
-                           word.setVedioPath2(node.getAttribute("path"));
-                           break;
-                       case "3":
-                           word.setVedioPath3(node.getAttribute("path"));
-                           break;
-
-                   }
+//                   switch (node.getAttribute("difficulty")){
+//                       case "1":
+//                           word.setVedioPath1(node.getAttribute("path"));
+//                           break;
+//                       case "2":
+//                           word.setVedioPath2(node.getAttribute("path"));
+//                           break;
+//                       case "3":
+//                           word.setVedioPath3(node.getAttribute("path"));
+//                           break;
+//
+//                   }
+                   word.setVedioPath1(node.getAttribute("value"));
+                   continue;
                }
 
         }
