@@ -6,5 +6,6 @@
     <dimen name="text_btn_size">16sp</dimen>
     <dimen name="text_size">16sp</dimen>
     <dimen name="margin_button">30dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 
 </resources>

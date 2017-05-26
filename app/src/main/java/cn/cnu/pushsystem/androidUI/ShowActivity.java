@@ -31,7 +31,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     private DBOpenHelper helper;
     private SQLiteDatabase db;
     private android.media.MediaPlayer mediaPlayer = new android.media.MediaPlayer();
-
+    String videoPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +73,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("pronunciationPath:"+pronunciationPath);
 
         //视频路径
-        String videoPath = Environment.getExternalStorageDirectory() + File.separator + "Android/data/" +
+         videoPath = Environment.getExternalStorageDirectory() + File.separator + "Android/data/" +
                 getApplication().getPackageName() + File.separator + "resource/" + word.getVedioPath1();
         System.out.println("getVedioPath1:"+videoPath);
 
@@ -149,6 +149,8 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.left_bottom: {
                 Intent intent = new Intent(this, VideoActivity.class);
                 intent.putExtra("word", content);//把单词传递给下一个活动
+                intent.putExtra("videoPath", videoPath);//把单词传递给下一个活动
+
                 startActivity(intent);
             }
             break;

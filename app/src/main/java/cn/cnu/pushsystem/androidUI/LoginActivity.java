@@ -1,5 +1,6 @@
 package cn.cnu.pushsystem.androidUI;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -113,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void gotoMain(View view) {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, ContentActivity.class));
     }
 
 
